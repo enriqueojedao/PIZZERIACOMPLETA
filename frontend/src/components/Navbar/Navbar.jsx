@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { UserContext } from '../../context/UserContext'; 
 import './Navbar.css';
 
 const Navbar = () => {
-  const { total } = useContext(CartContext); // Obtener el total desde CartContext
-  const token = false; // Simula autenticación
+  const { total } = useContext(CartContext); // Traigo el total desde CartContext.
+  const { token, logout } = useContext(UserContext); // Obtengo el token y el método logout desde UserContext.
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -32,7 +34,7 @@ const Navbar = () => {
                   <Link to="/profile" className="nav-link">⚙️ Profile</Link>
                 </li>
                 <li className="nav-item">
-                  <button className="nav-link">🔒 Logout</button>
+                  <button onClick={logout} className="nav-link btn btn-link">🔒 Logout</button>
                 </li>
               </>
             ) : (

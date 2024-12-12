@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { UserContext } from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Cart.css';
 
-const Cart = () => {
+const Cart = () => { 
     const { cart, updateQuantity, total, removeFromCart } = useContext(CartContext);
+    const { token } = useContext(UserContext); // Traigo el token para válidar en el boton pagar.
 
     return (
         <div className="container mt-3 mx-auto container-custom">
@@ -51,10 +53,14 @@ const Cart = () => {
             </div>
             <div className="text-center mt-1">
                 <h3>Total: ${total.toLocaleString()}</h3>
-                <button className="btn btn-success mt-2 mb-2">Pagar</button>
+                {/* Deshabilita el botón de "Pagar" si el token es false */}
+                <button className="btn btn-success mt-2 mb-2" disabled={!token}>
+                    {token ? 'Pagar' : 'Inicia sesión para pagar'}
+                </button>
             </div>
         </div>
     );
 };
 
 export default Cart;
+

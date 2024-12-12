@@ -9,11 +9,11 @@ export const addOrUpdateProduct = (cart, product) => {
 };
 
 export const updateProductQuantity = (cart, productId, amount) => {
-    return cart
-        .map((item) =>
-            item.id === productId ? { ...item, count: item.count + amount } : item
-        )
-        .filter((item) => item.count > 0);
+    return cart.map((item) =>
+        item.id === productId
+            ? { ...item, count: item.count + amount >= 0 ? item.count + amount : 0 } // Así no baja de 0, corrección de Jerlib.
+            : item
+    );
 };
 
 export const removeProduct = (cart, productId) => {

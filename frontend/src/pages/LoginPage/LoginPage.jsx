@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { validateCredentials } from '../../components/Tools/loginRegisterTools';
+import { UserContext } from '../../context/UserContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useContext(UserContext); //Traigo la función de login del contexto
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateCredentials(email, password)) {
+      login(); // Si las credenciales son válidas, se hace login.
       console.log('Inicio de sesión exitoso');
     }
   };

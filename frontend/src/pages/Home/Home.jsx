@@ -5,7 +5,7 @@ import { PizzaContext } from '../../context/PizzaContext';
 
 const Home = () => {
     const { pizzas } = useContext(PizzaContext);
-    const { addToCart } = useContext(CartContext);  // Obtener la función addToCart desde el CartContext
+    const { addToCart } = useContext(CartContext);  // Traigo la función addToCart desde el CartContext
 
     return (
         <div className="container">
@@ -18,7 +18,7 @@ const Home = () => {
                         >
                             <CardPizza 
                                 {...pizza} 
-                                addToCart={() => addToCart(pizza)}  // Pasar la función addToCart con los datos de la pizza
+                                addToCart={() => addToCart(pizza)}  // Pasar la función addToCart con los datos de la pizza que tengo.
                             />
                         </div>
                     ))

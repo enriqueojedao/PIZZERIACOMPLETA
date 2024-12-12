@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import './CardPizza.css';
 
-const CardPizza = ({ name, price, ingredients, img, addToCart, hideVerMas }) => (
+const CardPizza = ({ id, name, price, ingredients, img, addToCart, hideVerMas }) => (
   <div className="card card-pizza">
     <img src={img} alt={name} className="card-img-top" />
     <div className="card-body d-flex flex-column justify-content-between">
@@ -21,12 +22,14 @@ const CardPizza = ({ name, price, ingredients, img, addToCart, hideVerMas }) => 
     <div className={`card-footer d-flex ${
         hideVerMas ? 'justify-content-center' : 'justify-content-between'
       }`}>
-    {!hideVerMas && ( // Condicional para mostrar el botón "Ver más"
-        <button className="btn btn-outline-dark btn-ver-mas btn-click">Ver más 👀</button>
+      {!hideVerMas && ( // Condicional para mostrar el botón "Ver más", así se oculta en "Pizza.jsx"
+        <Link to={`/pizza/${id}`} className="btn btn-outline-dark btn-ver-mas btn-click">
+          Ver más 🔎
+        </Link>
       )}
       <button 
         className="btn btn-dark btn-añadir btn-click" 
-        onClick={addToCart}  // Se usa addToCart como onClick handler
+        onClick={addToCart} // Uso addToCart como onClick handler
       >
         Añadir 🛒
       </button>

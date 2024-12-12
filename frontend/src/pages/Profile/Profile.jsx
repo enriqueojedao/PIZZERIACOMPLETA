@@ -12,7 +12,7 @@ const Profile = () => {
       />
       <h2>Perfil de usuario</h2>
       <p>Email: usuario@example.com</p>
-      <button className="btn btn-danger">Cerrar sesión</button>
+      {/* <button className="btn btn-danger">Cerrar sesión</button> */}
     </div>
   );
 };
