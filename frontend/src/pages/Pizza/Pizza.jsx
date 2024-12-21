@@ -6,10 +6,10 @@ import { CartContext } from '../../context/CartContext';
 
 const Pizza = () => {
     const { addToCart } = useContext(CartContext);
-    const { pizzaId } = useParams(); // Me trae el ID dinámico de la URL
-    const { pizzas } = useContext(PizzaContext); // Obtenemos todas las pizzas del contexto
+    const { pizzaId } = useParams(); // Me trae el ID dinámico de la URL.
+    const { pizzas } = useContext(PizzaContext); // Aquí saco todas las pizzas del context.
 
-    const pizza = pizzas.find((p) => p.id === pizzaId); // Buscamos la pizza específica por su ID
+    const pizza = pizzas.find((p) => p.id === pizzaId); // Busco la pizza específica por su ID.
 
     if (!pizza) return <div>Cargando...</div>; 
 

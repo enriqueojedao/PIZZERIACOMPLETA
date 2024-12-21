@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { validateCredentials } from '../../components/Tools/loginRegisterTools';
+import { UserContext } from '../../context/UserContext';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { register } = useContext(UserContext); // Obtengo el método register del contexto.
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateCredentials(email, password, confirmPassword)) {
-      console.log('Registro exitoso');
+      await register(email, password); // Llamo al método register con las credenciales.
     }
   };
 
@@ -36,6 +38,7 @@ const RegisterPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
+              required
             />
           </div>
           <div className="mb-3">
@@ -45,6 +48,7 @@ const RegisterPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="form-control"
+              required
             />
           </div>
           <button type="submit" className="btn btn-dark w-100">

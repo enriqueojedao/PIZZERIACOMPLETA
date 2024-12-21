@@ -6,13 +6,12 @@ import { UserContext } from '../../context/UserContext';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useContext(UserContext); //Traigo la función de login del contexto
+  const { login } = useContext(UserContext); // Traigo el método login del contexto.
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateCredentials(email, password)) {
-      login(); // Si las credenciales son válidas, se hace login.
-      console.log('Inicio de sesión exitoso');
+      await login(email, password); // Llamo al método login con las credenciales del usuario.
     }
   };
 

@@ -29,7 +29,7 @@ const CardPizza = ({ id, name, price, ingredients, img, addToCart, hideVerMas })
       )}
       <button 
         className="btn btn-dark btn-añadir btn-click" 
-        onClick={addToCart} // Uso addToCart como onClick handler
+        onClick={addToCart} // Uso addToCart como onClick handler.
       >
         Añadir 🛒
       </button>

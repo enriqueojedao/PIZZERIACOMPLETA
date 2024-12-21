@@ -38,10 +38,16 @@ POST /api/auth/register
 body:
 
 ```json
-{
-  "email": "test@example.com",
-  "password": "123123"
-}
+[
+  {
+    "email": "test@test.com",
+    "password": "123123",
+  },
+  {
+    "email": "eaoo88@gmail.com",
+    "password": "123123",
+  }
+]
 ```
 
 ### Checkout & Profile
